@@ -9,20 +9,23 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:patch')) }}
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo "Patch bump"
+      - name: Bump
+        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+        with:
+          bump_type: patch
   perform-minor-bump:
     runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:minor')) }}
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo "Minor bump"
+      - name: Bump
+        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+        with:
+          bump_type: minor
   perform-major-bump:
     runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:major')) }}
     steps:
-      # Runs a single command using the runners shell
-      - name: Run a one-line script
-        run: echo "Major bump"
+      - name: Bump
+        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+        with:
+          bump_type: major
