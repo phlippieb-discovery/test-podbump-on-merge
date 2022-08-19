@@ -6,26 +6,17 @@ on:
   workflow_dispatch:
 jobs:
   perform-patch-bump:
-    runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:patch')) }}
-    steps:
-      - name: Bump
-        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
-        with:
-          bump_type: patch
+    uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+    with:
+      bump_type: patch
   perform-minor-bump:
-    runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:minor')) }}
-    steps:
-      - name: Bump
-        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
-        with:
-          bump_type: minor
+    uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+    with:
+      bump_type: minor
   perform-major-bump:
-    runs-on: ubuntu-latest
     if: ${{ (github.event.pull_request.merged == true) && (contains(github.event.pull_request.labels.*.name, 'bump:major')) }}
-    steps:
-      - name: Bump
-        uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
-        with:
-          bump_type: major
+    uses: phlippieb-discovery/test-podbump-on-merge/.github/workflows/bump-version.yml@main
+    with:
+      bump_type: major
