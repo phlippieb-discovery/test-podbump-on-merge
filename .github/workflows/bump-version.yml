@@ -1,0 +1,13 @@
+name: Bump version (dummy)
+on:
+  workflow_call:
+    inputs:
+      bump_type:
+        required: true
+        type: string
+jobs:
+  bump-version:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show current git status
+        run: git status
